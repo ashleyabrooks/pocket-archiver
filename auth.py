@@ -8,7 +8,7 @@ def obtain_token():
 
     url = "https://getpocket.com/v3/oauth/request"
     consumer_key = "68610-1a3e291e634b6401538c0fd2"
-    redirect_uri = ""
+    redirect_uri = "http://localhost:3000/"
 
     headers = { 
         "Host": "getpocket.com",
@@ -23,6 +23,8 @@ def obtain_token():
 
     r = requests.post(url, headers, data)
 
-    token = r["code"]
+    # token = r["code"]
 
-    return token
+    # return token
+
+    print r
