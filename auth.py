@@ -1,30 +1,39 @@
 import requests
 
+DATA = {
+    "consumer_key": "68610-1a3e291e634b6401538c0fd2",
+    "redirect_uri": "http://localhost:3000/",
+}
+
+HEADERS = { 
+    "Host": "getpocket.com",
+    "Content-Type": "application/json; charset=UTF-8",
+    "X-Accept": "application/json",
+}
+
 
 def obtain_token():
     """Obtains and returns a request token."""
 
-    # TODO
-
     url = "https://getpocket.com/v3/oauth/request"
-    consumer_key = "68610-1a3e291e634b6401538c0fd2"
-    redirect_uri = "http://localhost:3000/"
 
-    headers = { 
-        "Host": "getpocket.com",
-        "Content-Type": "application/json; charset=UTF-8",
-        "X-Accept": "application/json",
-    }
+    r = requests.post(url, DATA, HEADERS)
 
-    data = {
-        "consumer_key": consumer_key,
-        "redirect_uri": redirect_uri,
-    }
+    return r.text[5:]
 
-    r = requests.post(url, headers, data)
 
-    # token = r["code"]
+def convert_token(request_token):
+    """Converts request token into a Pocket access token."""
 
-    # return token
+    # TODO - DRY
 
-    print r
+    url = "https://getpocket.com/v3/oauth/authorize"
+
+
+    r = requests.post(url, data, headers)
+
+    print r.text
+
+
+
+
