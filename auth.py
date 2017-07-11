@@ -29,8 +29,7 @@ def convert_token(request_token):
 
     url = "https://getpocket.com/v3/oauth/authorize"
 
-
-    r = requests.post(url, data, headers)
+    r = requests.post(url, DATA, HEADERS)
 
     print r.text
 

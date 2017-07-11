@@ -3,6 +3,7 @@ import os
 import requests
 import json
 from auth import obtain_token, convert_token
+import webbrowser
 
 
 app = Flask(__name__)
@@ -23,16 +24,19 @@ def authenticate():
 
     pocket_redirect = "https://getpocket.com/auth/authorize?request_token=%s&redirect_uri=%s" % (request_token, redirect_uri)
 
-    return redirect(pocket_redirect)
+    webbrowser.open(pocket_redirect)
+
+    # converted_token = convert_token(request_token)
+
+    # print "TOKEN:", converted_token
+    return render_template("display_converted_token.html")
 
 
 @app.route('/auth-confirmed')
 def confirm_auth():
     """Confirm that the user has authorized Pocket with app, then convert request token into a Pocket access token."""
 
-    converted_token = convert_token()
-
-    pass
+    return render_template("auth_confirmation.html")
 
 
 if __name__ == "__main__":
