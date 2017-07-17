@@ -12,6 +12,8 @@ app = Flask(__name__)
 def show_homepage():
     """Display homepage."""
 
+    #TODO
+
     return render_template("index.html")
 
 
